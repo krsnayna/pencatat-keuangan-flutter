@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:pencatat_keuangan/components/appbar.dart';
+import 'package:pencatat_keuangan/components/modal.dart';
 import 'package:pencatat_keuangan/config/constant.dart';
 import 'package:pencatat_keuangan/models/transaction.dart';
 
@@ -159,10 +160,17 @@ class _DashboardPageState extends State<DashboardPage> {
                                           : Colors.red),
                                 ),
                                 TextButton(
-                                    onPressed: () {
-                                      _transactions.delete(_todayTransactions
-                                          .keys
-                                          .elementAt(index));
+                                    onPressed: () async {
+                                      bool? answer = await showConfirmDialog(
+                                        context,
+                                        "PERINGATAN",
+                                        "Tindakan ini akan menghapus riwayat transaksi. Apakah ingin melanjutkan ?",
+                                      );
+                                      if (answer != null && answer) {
+                                        _transactions.delete(_todayTransactions
+                                            .keys
+                                            .elementAt(index));
+                                      }
                                     },
                                     child: Icon(
                                       Icons.delete_forever,

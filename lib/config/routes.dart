@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pencatat_keuangan/config/constant.dart';
 import 'package:pencatat_keuangan/screens/dashboard_screen.dart';
 import 'package:pencatat_keuangan/screens/firstrun_screen.dart';
+import 'package:pencatat_keuangan/screens/login_screen.dart';
 import 'package:pencatat_keuangan/screens/new_transaction_screen.dart';
 import 'package:pencatat_keuangan/screens/report_screen.dart';
+import 'package:pencatat_keuangan/screens/register_screen.dart';
 
 class Routes {
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -21,6 +23,12 @@ class Routes {
       case reportPage:
         return MaterialPageRoute(
             settings: settings, builder: (_) => ReportScreen());
+      case loginPage:
+        return MaterialPageRoute(
+            settings: settings, builder: (_) => LoginScreen());
+      case registerPage:
+        return MaterialPageRoute(
+            settings: settings, builder: (_) => RegisterScreen());
       default:
         return null;
     }

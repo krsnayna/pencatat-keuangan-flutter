@@ -6,45 +6,6 @@ part of 'transaction.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TransactionTypeAdapter extends TypeAdapter<TransactionType> {
-  @override
-  final int typeId = 1;
-
-  @override
-  TransactionType read(BinaryReader reader) {
-    switch (reader.readByte()) {
-      case 0:
-        return TransactionType.Pemasukan;
-      case 1:
-        return TransactionType.Pengeluaran;
-      default:
-        return TransactionType.Pemasukan;
-    }
-  }
-
-  @override
-  void write(BinaryWriter writer, TransactionType obj) {
-    switch (obj) {
-      case TransactionType.Pemasukan:
-        writer.writeByte(0);
-        break;
-      case TransactionType.Pengeluaran:
-        writer.writeByte(1);
-        break;
-    }
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TransactionTypeAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
 class TransactionAdapter extends TypeAdapter<Transaction> {
   @override
   final int typeId = 0;
@@ -90,6 +51,45 @@ class TransactionAdapter extends TypeAdapter<Transaction> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is TransactionAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class TransactionTypeAdapter extends TypeAdapter<TransactionType> {
+  @override
+  final int typeId = 1;
+
+  @override
+  TransactionType read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return TransactionType.Pemasukan;
+      case 1:
+        return TransactionType.Pengeluaran;
+      default:
+        return TransactionType.Pemasukan;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, TransactionType obj) {
+    switch (obj) {
+      case TransactionType.Pemasukan:
+        writer.writeByte(0);
+        break;
+      case TransactionType.Pengeluaran:
+        writer.writeByte(1);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TransactionTypeAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

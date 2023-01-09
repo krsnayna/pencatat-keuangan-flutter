@@ -6,6 +6,7 @@ import 'package:pencatat_keuangan/config/constant.dart';
 import 'package:pencatat_keuangan/config/routes.dart';
 import 'package:pencatat_keuangan/models/report.dart';
 import 'package:pencatat_keuangan/models/transaction.dart';
+import 'package:pencatat_keuangan/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 
@@ -17,9 +18,11 @@ void main() async {
   Hive.registerAdapter(TransactionAdapter());
   Hive.registerAdapter(TransactionTypeAdapter());
   Hive.registerAdapter(ReportAdapter());
+  Hive.registerAdapter(UserAdapter());
   initializeDateFormatting('id_ID');
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(MyApp()));
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft])
+  //     .then((value) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -41,7 +44,7 @@ class _MyAppState extends State<MyApp> {
     if (_firstRun) {
       return firstRunPage;
     } else {
-      return dashboardPage;
+      return loginPage;
     }
   }
 

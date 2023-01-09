@@ -6,6 +6,8 @@ const String dashboardPage = '/dashboard';
 const String firstRunPage = '/firstRun';
 const String addNewTransactionPage = '/transaction/new';
 const String reportPage = '/report';
+const String loginPage = '/login';
+const String registerPage = '/register';
 
 // styles
 const Color blackTextColor = Color(0xFF334455);
